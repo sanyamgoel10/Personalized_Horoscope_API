@@ -1,18 +1,23 @@
 // Config
-const dotenv = require('dotenv');
-dotenv.config();
+const { port } = require('./config/config.js');
 
 // Express App
-const app = require("./app.js");
+const app = require('./app.js');
+
+// Database Service
+const DatabaseService = require('./services/databaseService.js');
 
 const startServer = async () => {
-    try {    
+    try {
+        // Connect Database
+        await DatabaseService.connectToDatabase();
+
         // Start Server
-        app.listen(process.env.port, () => {
-            console.log(`Server running on port ${process.env.port}`);
+        app.listen(port, () => {
+            console.log(`Server running on port ${port}`);
         });
     } catch (error) {
-        console.error("Failed to start server:", error);
+        console.error('Failed to start server:', error);
         process.exit(1);
     }
 };
