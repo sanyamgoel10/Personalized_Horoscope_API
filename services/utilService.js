@@ -35,6 +35,10 @@ class UtilService {
     async validatePassword(inputPassword, originalPassword) {
         return await bcrypt.compare(inputPassword, originalPassword);
     }
+
+    checkValidObject(inpVal) {
+        return inpVal != null && 'object' == typeof inpVal && !Array.isArray(inpVal);
+    }
 }
 
 module.exports = new UtilService();
