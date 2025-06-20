@@ -11,7 +11,7 @@ class AuthService {
         const token = jwt.sign(jwtObj, jwtSecret, {
             expiresIn: '1h',
         });
-        return token;
+        return btoa(token);
     }
 }
 
