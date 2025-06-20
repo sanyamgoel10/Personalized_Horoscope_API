@@ -1,5 +1,6 @@
 const UtilService = require('../services/utilService.js');
 const AuthService = require('../services/authService.js');
+const HoroscopeService = require('../services/horoscopeService.js');
 
 const User = require('../services/models/users.js');
 
@@ -51,7 +52,8 @@ class AuthController {
         email,
         name,
         password: pass,
-        dob: new Date(dob)
+        dob: new Date(dob),
+        zodiac: await HoroscopeService.getHoroscopeFromDob(dob)
       });
       await user.save();
 
