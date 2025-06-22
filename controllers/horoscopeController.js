@@ -68,6 +68,13 @@ class HoroscopeController {
         createdAt: { $gte: sevenDaysAgo }
       }).sort({ createdAt: -1 });
 
+      if(resultHistory.length < 1){
+        return res.status(200).json({
+          status: 0,
+          msg: 'No horoscope found for last 7 days'
+        });
+      }
+
       const result = {};
       resultHistory.forEach(entry => {
         const date = entry.createdAt.toISOString().split('T')[0]; // "yyyy-mm-dd"
