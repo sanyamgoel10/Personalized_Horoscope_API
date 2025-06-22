@@ -147,3 +147,14 @@ To get this project up and running on your local machine, follow these steps:
           }
         }
         ```
+
+-----
+
+## Design Decisions
+
+  * **Modular Structure:** The application is organized into separate modules for routes, controllers, models, and middleware for better maintainability and scalability.
+  * **Mongoose ODM:** Mongoose was chosen for MongoDB interaction due to its powerful schema definition, validation, and query building capabilities, which simplify data management.
+  * **JWT for Authentication:** JWTs provide a secure and stateless way to handle user authentication, making the API scalable and easy to integrate with client-side applications.
+  * **In-Memory Horoscope Data:** For the purpose of this assignment, horoscope content is mocked in-memory. In a real-world scenario, this would likely be fetched from an external API or a more robust content management system.
+  * **Zodiac Sign Calculation:** The zodiac sign is calculated server-side during user registration to ensure consistency and prevent client-side manipulation.
+  * **History Storage:** Horoscope entries are stored in the database as they are served to users, enabling the retrieval of past horoscopes.
