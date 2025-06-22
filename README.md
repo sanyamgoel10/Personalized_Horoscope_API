@@ -21,6 +21,7 @@ This project implements a backend service in Node.js with Express.js that genera
   * **MongoDB:** NoSQL database for data storage.
   * **Mongoose:** ODM (Object Data Modeling) library for MongoDB and Node.js.
   * **JWT (JSON Web Tokens):** For secure user authentication.
+  * **BCRYPT:** For secure password encryption.
 
 -----
 
@@ -147,3 +148,23 @@ To get this project up and running on your local machine, follow these steps:
           }
         }
         ```
+---
+
+## Design Decisions
+  * Organized the code in a clean, modular structure by separating routes, controllers, models, and middleware for better clarity and maintainability.
+  * Used MongoDB with Mongoose to define schemas and manage data effectively.
+  * Implemented JWT-based authentication for secure, stateless, and scalable access control.
+  * Added rate limiting to all APIs, restricting each IP to 5 requests per minute to prevent abuse.
+  * User passwords are securely hashed and validated using bcrypt.
+  * Zodiac sign is automatically calculated on the server during registration and stored with the user’s record.
+  * Horoscope data is currently stored in an in-memory config file, with flexibility to switch to an external API in the future.
+  * Horoscope history is tracked and stored, allowing users to access their past 7 days' horoscopes.
+  * Integrated Swagger documentation to provide an interactive and user-friendly way to explore the APIs.
+
+---
+
+## Future Enhancements
+Following enhancements can be implemented in the APIs:
+  * Password Reset functionality can be added with Email OTP authentication or a token-based link.
+  * Integrate with an external API to serve real-time, personalized horoscope content.
+  * Set up CI/CD pipelines for automated testing and seamless deployment.
