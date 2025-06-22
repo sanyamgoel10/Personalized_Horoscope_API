@@ -45,10 +45,37 @@ class HoroscopeController {
 
   async getUserHistoryHoroscope(req, res) {
     try {
-      console.log("req.UserData: ", req.UserData);
+      const userDetails = await User.findOne({
+        _id: req.UserData._id
+      });
+
+      if (!UtilService.checkValidObject(userDetails)) {
+        return res.status(404).json({
+          status: 0,
+          msg: 'User not found'
+        });
+      }
+
+      let resultHistory = {};
+
+      let today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      for (let [dateStr, value] of Object.entries(userDetails.horoscopeHistory)) {
+        let entryDate = new Date(dateStr);
+        entryDate.setHours(0, 0, 0, 0);
+
+        let diffInDays = (today - entryDate) / (1000 * 60 * 60 * 24);
+
+        if (diffInDays >= 0 && diffInDays <= 7) {
+          resultHistory[dateStr] = value;
+        }
+      }
+
       return res.status(200).json({
         status: 1,
-        msg: 'Hello From getUserHistoryHoroscope'
+        msg: 'Horoscope history successfully fetched',
+        horoscopeHistory: resultHistory
       });
     } catch (error) {
       console.log("Error: ", error);
