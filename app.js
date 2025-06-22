@@ -7,9 +7,9 @@ const AuthMiddleware = require('./middlewares/authMiddleware.js');
 
 // Routes
 const HoroscopeRoutes = require('./routes/horoscopeRoutes.js');
-const AuthRoutes = require('./routes/authRoutes');
+const HomeRoutes = require('./routes/homeRoutes.js');
 
-app.use('/', AuthRoutes);
+app.use('/', HomeRoutes);
 app.use('/horoscope', AuthMiddleware.verifyJwtToken, HoroscopeRoutes);
 
 // 404 Handler

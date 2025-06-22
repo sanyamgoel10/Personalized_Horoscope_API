@@ -4,7 +4,7 @@ const HoroscopeService = require('../services/horoscopeService.js');
 
 const User = require('../services/models/users.js');
 
-class AuthController {
+class HomeController {
   async signUp(req, res) {
     try {
       if (!UtilService.checkValidObject(req.body)) {
@@ -88,7 +88,7 @@ class AuthController {
           msg: 'Invalid request body'
         });
       }
-      
+
       if (!UtilService.checkValidString(req.body.Password)) {
         return res.status(404).json({
           status: 0,
@@ -138,4 +138,4 @@ class AuthController {
   }
 }
 
-module.exports = new AuthController();
+module.exports = new HomeController();
