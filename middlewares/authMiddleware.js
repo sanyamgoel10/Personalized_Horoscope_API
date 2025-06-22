@@ -2,7 +2,7 @@ const AuthService = require('../services/authService.js');
 const UtilService = require('../services/utilService.js');
 
 class AuthMiddleware {
-  async verifyJwtToken(req, res, next) {
+  async validateJwtToken(req, res, next) {
     try {
       const headerAuth = req.headers['authorization'];
       if (!UtilService.checkValidString(headerAuth)) {

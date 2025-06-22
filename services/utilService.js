@@ -39,6 +39,10 @@ class UtilService {
     checkValidObject(inpVal) {
         return inpVal != null && 'object' == typeof inpVal && !Array.isArray(inpVal);
     }
+
+    checkValidArray(inpVal) {
+        return inpVal != null && 'object' == typeof inpVal && Array.isArray(inpVal);
+    }
 }
 
 module.exports = new UtilService();

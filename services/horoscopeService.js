@@ -19,6 +19,10 @@ class HoroscopeService {
     }
     return null;
   }
+
+  async getHoroscopeFromZodiac(zodiacSign){
+    return horoscopes[zodiacSign].text;
+  }
 }
 
 module.exports = new HoroscopeService();

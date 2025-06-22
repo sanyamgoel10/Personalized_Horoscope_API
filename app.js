@@ -10,7 +10,7 @@ const HoroscopeRoutes = require('./routes/horoscopeRoutes.js');
 const HomeRoutes = require('./routes/homeRoutes.js');
 
 app.use('/', HomeRoutes);
-app.use('/horoscope', AuthMiddleware.verifyJwtToken, HoroscopeRoutes);
+app.use('/horoscope', AuthMiddleware.validateJwtToken, HoroscopeRoutes);
 
 // 404 Handler
 app.use((req, res) => {

@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  horoscopeHistory: {
+    type: Object,
+    default: {}
+  },
   createdAt: {
     type: Date,
     default: Date.now,
