@@ -6,11 +6,11 @@ app.use(express.json());
 const AuthMiddleware = require('./middlewares/authMiddleware.js');
 
 // Routes
-const horoscopeRoutes = require('./routes/horoscopeRoutes.js');
-const authRoutes = require('./routes/authRoutes');
+const HoroscopeRoutes = require('./routes/horoscopeRoutes.js');
+const AuthRoutes = require('./routes/authRoutes');
 
-app.use('/', authRoutes);
-app.use('/horoscope', AuthMiddleware.verifyJwtToken, horoscopeRoutes);
+app.use('/', AuthRoutes);
+app.use('/horoscope', AuthMiddleware.verifyJwtToken, HoroscopeRoutes);
 
 // 404 Handler
 app.use((req, res) => {
