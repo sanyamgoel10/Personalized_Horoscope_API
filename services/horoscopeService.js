@@ -20,9 +20,10 @@ class HoroscopeService {
     return null;
   }
 
-  async getRandomHoroscope(){
-    let allHoroscopes = horoscopes[zodiacSign].text;
-    return allHoroscopes[Math.floor((Math.random()*allHoroscopes.length))]
+  async getHoroscopeFromZodiac(zodiacSign){
+    // let allHoroscopes = horoscopes[zodiacSign].text;
+    // return allHoroscopes[Math.floor((Math.random()*allHoroscopes.length))]
+    return horoscopes[zodiacSign].text;
   }
 }
 
