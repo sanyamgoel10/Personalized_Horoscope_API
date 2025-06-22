@@ -9,8 +9,22 @@ const options = {
       version: '1.0.0',
       description: 'API documentation for Horoscope service',
     },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
   },
-  apis: ['./routes/*.js'], // Path to your route files
+  apis: ['./routes/*.js'], // Adjust path as needed
 };
 
 const swaggerSpec = swaggerJSDoc(options);
