@@ -18,7 +18,6 @@ class AuthService {
     async verifyJwtToken(jwtToken) {
         try {
             let verified = jwt.verify(jwtToken, jwtSecret);
-            console.log("verified: ", verified);
             if (UtilService.checkValidObject(verified)) {
                 return verified;
             } else {

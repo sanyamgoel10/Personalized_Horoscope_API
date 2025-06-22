@@ -7,6 +7,13 @@ const User = require('../services/models/users.js');
 class AuthController {
   async signUp(req, res) {
     try {
+      if (!UtilService.checkValidObject(req.body)) {
+        return res.status(404).json({
+          status: 0,
+          msg: 'Invalid request body'
+        });
+      }
+
       if (!UtilService.checkValidString(req.body.Name)) {
         return res.status(404).json({
           status: 0,
