@@ -82,6 +82,13 @@ class AuthController {
 
   async login(req, res) {
     try {
+      if (!UtilService.checkValidObject(req.body)) {
+        return res.status(404).json({
+          status: 0,
+          msg: 'Invalid request body'
+        });
+      }
+      
       if (!UtilService.checkValidString(req.body.Password)) {
         return res.status(404).json({
           status: 0,
