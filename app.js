@@ -1,6 +1,18 @@
 const express = require('express');
 const app = express();
 
+// Middleware
+app.use(express.json());
+const AuthMiddleware = require('./middlewares/authMiddleware.js');
+
+// Routes
+const HoroscopeRoutes = require('./routes/horoscopeRoutes.js');
+const HomeRoutes = require('./routes/homeRoutes.js');
+
+// Swagger documentation
+const { swaggerUi, swaggerSpec } = require('./swagger.js'); // adjust path as needed
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 // Rate Limiter Added in all APIs
 const rateLimit = require('express-rate-limit');
 const limiter = rateLimit({
@@ -10,16 +22,8 @@ const limiter = rateLimit({
     msg: 'Too many requests, please try again after a minute.'
   }
 });
-
-// Middleware
-app.use(express.json());
-const AuthMiddleware = require('./middlewares/authMiddleware.js');
-
-// Routes
-const HoroscopeRoutes = require('./routes/horoscopeRoutes.js');
-const HomeRoutes = require('./routes/homeRoutes.js');
-
 app.use(limiter);
+
 app.use('/', HomeRoutes);
 app.use('/horoscope', AuthMiddleware.validateJwtToken, HoroscopeRoutes);
 
